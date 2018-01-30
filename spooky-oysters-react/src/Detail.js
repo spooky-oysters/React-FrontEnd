@@ -14,7 +14,7 @@ class Detail extends Component {
 
     componentDidMount() {
         // const id = this.state.id
-        fetch("http://bangazon.com:5000/api/trainingprogram/1")
+        fetch("http://bangazon.com:5000/api/trainingprogram/2")
             .then(res => res.json())
             .then(
             (result) => {
@@ -44,16 +44,17 @@ class Detail extends Component {
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
+            let startDate = (new Date(this.state.items.startDate)).toLocaleString();
+            let endDate = (new Date(this.state.items.endDate)).toLocaleString();
             return (
                 <div className="Detail">
                     <header className="Detail-header">
                         <h1>Training Program</h1>
                     </header>
                     <h3>{items.name}</h3>
-                    <p>Start Date: {items.startDate}</p> 
-                    <p>End Date: {items.endDate}</p> 
-                    <p>Max Attendance Amount: {items.maxAttendance}</p> 
-                    <p>{items.employees}</p>
+                    <p>Start Date: {startDate}</p> 
+                    <p>End Date: {endDate}</p> 
+                    <p>Max Attendance Amount: {items.maxAttendance} people</p> 
                     
                 </div>
             );
