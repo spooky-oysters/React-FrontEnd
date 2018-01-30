@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 import ListItem from './ListItem.js';
+import Collapsible from 'react-materialize';
 // import registerServiceWorker from './registerServiceWorker';
 export default class TrainingProgramList extends React.Component {
     
@@ -35,6 +36,19 @@ export default class TrainingProgramList extends React.Component {
         )
     }
   
+
+//     <Collapsible>
+// 	<CollapsibleItem header='First' icon='filter_drama'>
+// 		Lorem ipsum dolor sit amet.
+// 	</CollapsibleItem>
+// 	<CollapsibleItem header='Second' icon='place'>
+// 		Lorem ipsum dolor sit amet.
+// 	</CollapsibleItem>
+// 	<CollapsibleItem header='Third' icon='whatshot'>
+// 		Lorem ipsum dolor sit amet.
+// 	</CollapsibleItem>
+// </Collapsible>
+
     render() {
       const { error, isLoaded, items } = this.state;
       if (error) {
@@ -45,6 +59,10 @@ export default class TrainingProgramList extends React.Component {
         return (
           <ul>
             {items.map(item => (
+  //             <Collapsible>
+  //             <CollapsibleItem header='First' icon='filter_drama'>
+	// 	Lorem ipsum dolor sit amet.
+	// </CollapsibleItem>
               <li key={item.trainingProgramId}>
               <ListItem name={item.name} id={item.trainingProgramId}/>
               </li>
