@@ -28,7 +28,7 @@ export default class TrainingProgramForm extends React.Component {
                 },
                 body: JSON.stringify(this.state)
             })
-                .then(res => console.log(res.json()))
+                .then(res => res.JSON())
                 .then(
                 (result) => {
                     this.setState({
@@ -50,8 +50,6 @@ export default class TrainingProgramForm extends React.Component {
                     });
                 }
                 )
-        } else {
-            alert('Form invalid');
         }
     }
 
@@ -63,24 +61,31 @@ export default class TrainingProgramForm extends React.Component {
                     name='name'
                     placeholder='Program Name'
                     type='text'
+                    required
                     value={this.state.name}
                     onChange={e => this.change(e)} />
                 <br />
                 <input
                     name='startDate'
                     placeholder='Start Date'
+                    type='text'
+                    required
                     value={this.state.startDate}
                     onChange={e => this.change(e)} />
                 <br />
                 <input
                     name='endDate'
                     placeholder='End Date'
+                    type='text'
+                    required
                     value={this.state.endDate}
                     onChange={e => this.change(e)} />
                 <br />
                 <input
                     name='maxAttendance'
                     placeholder='Maximum Attendance'
+                    type='number'
+                    required
                     value={this.state.maxAttendance}
                     onChange={e => this.change(e)} />
 
