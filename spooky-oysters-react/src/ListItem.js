@@ -30,7 +30,7 @@ export default class TrainingProgramListItem extends React.Component {
         return (
             <div>
                 <span className="listItem" onClick={this.toggleDetail}>{this.state.name}</span>
-                {this.state.showDetail ? <Detail id={this.state.id}/> : null}
+                {this.state.showDetail ? <Detail id={this.state.id} removeItem={this.props.removeItem}/> : null}
             </div>
         );
     }
