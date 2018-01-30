@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import TrainingProgramList from './TrainingProgramList.js';
 import TrainingProgramForm from './trainingProgramForm.js';
-import {Button, Modal, Dropdown} from 'react-materialize';
+import {Button, Modal, Dropdown, Tabs, Tab} from 'react-materialize';
 
 export default class TrainingProgram extends React.Component {
     constructor(prop) {
@@ -42,17 +42,16 @@ export default class TrainingProgram extends React.Component {
         return(
             <section className="trainingProgramComponent">
             <h1>Training Programs</h1>
-
+            
             <Button onClick={this.onClickList}>List Programs</Button>
-
+            
             <Modal
                 header='Add a Training Program'
-                trigger={<Button onClick={this.onClickForm}>Add New</Button>}>
+                trigger={<Button onClick={this.onClickForm}>Add New Program</Button>}>
                 <TrainingProgramForm />
             </Modal>
-            
             <Button onClick={this.onClickCollapseAll}>Collapse</Button>
-
+            
             { this.state.showList ? <TrainingProgramList /> : null}
             { this.state.showNew ? <TrainingProgramForm /> : null}
             
