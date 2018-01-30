@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import Detail from './Detail.js';
 
 export default class TrainingProgramListItem extends React.Component {
     constructor(prop) {
@@ -28,7 +29,7 @@ export default class TrainingProgramListItem extends React.Component {
         return (
             <div>
                 <span className="trainingProgramListItem" onClick={this.toggleDetail}>{this.state.name}</span>
-                {this.state.showDetail ? <DetailStub /> : null}
+                {this.state.showDetail ? <Detail  /> : null}
             </div>
         );
     }
