@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-
+import TrainingProgramListItem from './TrainingProgramListItem.js';
 // import registerServiceWorker from './registerServiceWorker';
 export default class TrainingProgramList extends React.Component {
     
@@ -45,9 +45,9 @@ export default class TrainingProgramList extends React.Component {
         return (
           <ul>
             {items.map(item => (
-              <li key={item.trainingProgramId}>
-                {item.name} {item.maxAttendance}
-              </li>
+              <li key={item.trainingProgramId}><a href="#">
+              <TrainingProgramListItem name={item.name}/>
+              </a></li>
             ))}
           </ul>
         );
