@@ -7,3 +7,12 @@ body {
 ul {
   list-style: none;
 }
+
+li:hover {
+  cursor: pointer;
+  font-size: 1.15em;  
+}
+
+.Detail {
+  font-size: .85em;
+}

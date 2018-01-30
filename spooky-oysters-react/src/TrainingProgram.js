@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import TrainingProgramList from './TrainingProgramList.js';
-import TrainingProgramForm from './TrainingProgramForm.js';
+import TrainingProgramForm from './trainingProgramForm.js';
 
 export default class TrainingProgram extends React.Component {
     constructor(prop) {
@@ -45,7 +45,7 @@ export default class TrainingProgram extends React.Component {
         <button onClick={this.onClickForm}>Add New</button>
         <button onClick={this.onClickCollapseAll}>Collapse</button>
         { this.state.showList ? <TrainingProgramList /> : null}
-        { this.state.showForm ? <TrainingProgramForm /> : null}
+        { this.state.showNew ? <TrainingProgramForm /> : null}
         </section>
         );
     }
