@@ -7,11 +7,13 @@ class Detail extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: []
+            items: [],
+            // id: this.props.id
         };
     }
 
     componentDidMount() {
+        // const id = this.state.id
         fetch("http://bangazon.com:5000/api/trainingprogram/1")
             .then(res => res.json())
             .then(
@@ -45,15 +47,14 @@ class Detail extends Component {
             return (
                 <div className="Detail">
                     <header className="Detail-header">
-
-                        <h1 className="Detail-title">Training Program Detail</h1>
+                        <h1>Training Program</h1>
                     </header>
-                    <p className="Detail-intro">
-                        Here we will display the details for a training program.
-                    </p>
-                    <div>
-                    <h2>{items.name}, 
-                    </div>
+                    <h3>{items.name}</h3>
+                    <p>Start Date: {items.startDate}</p> 
+                    <p>End Date: {items.endDate}</p> 
+                    <p>Max Attendance Amount: {items.maxAttendance}</p> 
+                    <p>{items.employees}</p>
+                    
                 </div>
             );
         }
