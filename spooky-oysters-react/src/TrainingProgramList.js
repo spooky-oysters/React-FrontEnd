@@ -13,6 +13,12 @@ export default class TrainingProgramList extends React.Component {
       };
     }
   
+    /*
+      This function is passed to the child components and is
+      eventually called by the Detail component. This will 
+      update the state of the list to remove an item once it
+      has been removed.
+    */
     removeItem = (id) => {
       // copy the current state of items
       let listItems = this.state.items.slice();
