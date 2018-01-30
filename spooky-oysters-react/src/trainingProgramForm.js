@@ -67,7 +67,7 @@ export default class TrainingProgramForm extends React.Component {
                     <input
                         name='startDate'
                         placeholder='Start Date'
-                        type='text'
+                        type='date'
                         required
                         value={this.state.startDate}
                         onChange={e => this.change(e)} />
@@ -75,7 +75,7 @@ export default class TrainingProgramForm extends React.Component {
                     <input
                         name='endDate'
                         placeholder='End Date'
-                        type='text'
+                        type='date'
                         required
                         value={this.state.endDate}
                         onChange={e => this.change(e)} />
