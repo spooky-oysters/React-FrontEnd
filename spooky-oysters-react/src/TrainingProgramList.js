@@ -3,7 +3,7 @@ import './index.css';
 import ListItem from './ListItem.js';
 import Detail from './Detail.js';
 import {Collapsible, CollapsibleItem, Row, Col, Container} from 'react-materialize';
-// import registerServiceWorker from './registerServiceWorker';
+
 export default class TrainingProgramList extends React.Component {
     
   constructor(props) {
