@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 
 class Detail extends Component {
     constructor(props) {
@@ -8,21 +7,17 @@ class Detail extends Component {
             error: null,
             isLoaded: false,
             items: [],
-            id: props.id,
+            id: this.props.id,
             response: ''
         };
     }
 
     componentDidMount() {
-        // const id = this.state.id
+        const id = this.state.id
         fetch(`http://bangazon.com:5000/api/trainingprogram/${id}`)
             .then(res => res.json())
             .then(
             (result) => {
-                console.log(result)
-                this.setState({
-                    response: result.ok ? 'Training Program Deleted' : 'Training Program could not be deleted'
-                });
                 this.setState({
                     isLoaded: true,
                     items: result
@@ -42,14 +37,19 @@ class Detail extends Component {
 
     deleteTrainingProgram = id => {
         fetch(`http://bangazon.com:5000/api/trainingprogram/${id}`, {method: 'delete'})
-            .then(res => res.json())
+            .then(res => {
+                this.setState({
+                    response: res.ok ? 'Training Program Deleted' : 'Training Program could not be deleted'
+                })
+                return res.json();
+            })
             .then(
             (result) => {
-                console.log(result)
                 this.setState({
                     isLoaded: true,
-                    items: result
+                    items: result,
                 });
+               
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
@@ -75,13 +75,9 @@ class Detail extends Component {
             let endDate = (new Date(this.state.items.endDate)).toLocaleString();
             return (
                 <div className="Detail">
-                    <header className="Detail-header">
-                        <h1>Training Program</h1>
-                    </header>
-                    <h3>{items.name}</h3>
                     <p>Start Date: {startDate}</p> 
                     <p>End Date: {endDate}</p> 
-                    <p>Max Attendance Amount: {items.maxAttendance} people</p> 
+                    <p>Max Attendance: {items.maxAttendance} people</p> 
 
                     <button onClick={() => this.deleteTrainingProgram(id)}>
                         Delete
