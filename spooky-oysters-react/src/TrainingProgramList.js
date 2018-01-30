@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 
 // import registerServiceWorker from './registerServiceWorker';
-export default class TrainingProgram extends React.Component {
+export default class TrainingProgramList extends React.Component {
     
   constructor(props) {
       super(props);
@@ -46,7 +46,7 @@ export default class TrainingProgram extends React.Component {
           <ul>
             {items.map(item => (
               <li key={item.trainingProgramId}>
-                {item(0)} {item.maxAttendance}
+                {item.name} {item.maxAttendance}
               </li>
             ))}
           </ul>
