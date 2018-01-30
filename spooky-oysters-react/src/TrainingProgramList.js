@@ -45,9 +45,9 @@ export default class TrainingProgramList extends React.Component {
         return (
           <ul>
             {items.map(item => (
-              <li key={item.trainingProgramId}><a href="#">
+              <li key={item.trainingProgramId}>
               <ListItem name={item.name} id={item.trainingProgramId}/>
-              </a></li>
+              </li>
             ))}
           </ul>
         );
