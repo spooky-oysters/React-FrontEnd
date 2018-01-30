@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Button} from 'react-materialize';
 
 class Detail extends Component {
     constructor(props) {
@@ -79,9 +80,9 @@ class Detail extends Component {
                     <p>End Date: {endDate}</p> 
                     <p>Max Attendance: {items.maxAttendance} people</p> 
 
-                    <button onClick={() => this.deleteTrainingProgram(id)}>
+                    <Button onClick={() => this.deleteTrainingProgram(id)}>
                         Delete
-                    </button>
+                    </Button>
 
                     <div>{response}</div>
                     

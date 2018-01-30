@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col} from 'react-materialize';
+import {Row, Col, Button} from 'react-materialize';
 
 export default class TrainingProgramForm extends React.Component {
 
@@ -84,7 +84,7 @@ export default class TrainingProgramForm extends React.Component {
                             onChange={e => this.change(e)}/>
 
                         <br/>
-                        <button onClick={e => this.onSubmit(e)}>Submit</button>
+                        <Button onClick={e => this.onSubmit(e)}>Submit</Button>
                     </Col>
                     <div>{this.state.response}</div>
                 </Row>
