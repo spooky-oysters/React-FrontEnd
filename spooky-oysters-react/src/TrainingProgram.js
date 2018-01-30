@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 import TrainingProgramList from './TrainingProgramList.js';
+import TrainingProgramForm from './trainingProgramForm.js';
 
 export default class TrainingProgram extends React.Component {
     constructor(prop) {
@@ -38,12 +39,13 @@ export default class TrainingProgram extends React.Component {
 
     render() {
         return(
-        <section className="trainingProgram">
+        <section className="trainingProgramComponent">
         <h1>Training Programs</h1>
         <button onClick={this.onClickList}>List Programs</button>
         <button onClick={this.onClickForm}>Add New</button>
         <button onClick={this.onClickCollapseAll}>Collapse</button>
         { this.state.showList ? <TrainingProgramList /> : null}
+        { this.state.showNew ? <TrainingProgramForm /> : null}
         </section>
         );
     }
