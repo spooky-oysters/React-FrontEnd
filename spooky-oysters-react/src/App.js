@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import TrainingProgramForm from './trainingProgramForm.js';
+import TrainingProgram from './TrainingProgram.js';
+
 
 class App extends Component {
 
@@ -10,6 +12,7 @@ class App extends Component {
 
         <TrainingProgramForm />
 
+        <TrainingProgram />
       </div>
     );
   }
