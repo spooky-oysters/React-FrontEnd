@@ -45,10 +45,6 @@ class Detail extends Component {
             })
             .then(
             (result) => {
-                this.setState({
-                    isLoaded: true,
-                    items: result,
-                });
                 this.props.removeItem(id);
                
             },

@@ -1,6 +1,5 @@
 import React from 'react';
 import './index.css';
-import ListItem from './ListItem.js';
 
 export default class CustomerComponent extends React.Component {
     constructor(prop) {
@@ -205,7 +204,7 @@ class CustomerListItemDetail extends React.Component {
 
 
     render() {
-        const { error, isLoaded, items, id, response } = this.state;
+        const { error, isLoaded, items, response } = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
