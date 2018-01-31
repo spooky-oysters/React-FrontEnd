@@ -314,7 +314,7 @@ class CustomerForm extends React.Component {
                         onChange={e => this.change(e)} />
 
                    </Row>
-                    <button onClick={e => this.onSubmit(e)}>Submit</button>
+                    <Button onClick={e => this.onSubmit(e)}>Submit</Button>
                 </form>
                 <div>{this.state.response}</div>
                 </Col>  
