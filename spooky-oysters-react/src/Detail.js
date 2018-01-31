@@ -45,11 +45,11 @@ class Detail extends Component {
             })
             .then(
             (result) => {
-                this.props.removeItem(id);
                 this.setState({
                     isLoaded: true,
                     items: result,
                 });
+                this.props.removeItem(id);
                
             },
             // Note: it's important to handle errors here
