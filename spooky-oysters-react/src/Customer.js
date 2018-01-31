@@ -297,7 +297,7 @@ class CustomerForm extends React.Component {
                     <Row>
                     <Input
                         name='firstName'
-                        placeholder='First Name'
+                        label='First Name'
                         type='text'
                         required
                         value={this.state.firstName}
@@ -307,7 +307,7 @@ class CustomerForm extends React.Component {
                     <Row>
                     <Input
                         name='lastName'
-                        placeholder='Last Name'
+                        label='Last Name'
                         type='text'
                         required
                         value={this.state.lastName}
