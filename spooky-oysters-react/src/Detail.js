@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Button} from 'react-materialize';
 
 class Detail extends Component {
     constructor(props) {
@@ -46,7 +47,6 @@ class Detail extends Component {
             .then(
             (result) => {
                 this.props.removeItem(id);
-               
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
@@ -76,9 +76,9 @@ class Detail extends Component {
                     <p>End Date: {endDate}</p> 
                     <p>Max Attendance: {items.maxAttendance} people</p> 
 
-                    <button onClick={() => this.deleteTrainingProgram(id)}>
+                    <Button onClick={() => this.deleteTrainingProgram(id)}>
                         Delete
-                    </button>
+                    </Button>
 
                     <div>{response}</div>
                     

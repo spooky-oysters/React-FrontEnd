@@ -16,3 +16,8 @@ li:hover {
 .Detail {
   font-size: .85em;
 }
+.input-field {
+  position: relative;
+  margin-top: 1rem;
+  width: 100%;
+}

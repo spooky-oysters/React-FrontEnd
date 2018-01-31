@@ -1,4 +1,6 @@
 import React from 'react';
+import {Row, Col, Button, Input} from 'react-materialize';
+import './index.css';
 
 export default class TrainingProgramForm extends React.Component {
 
@@ -7,15 +9,13 @@ export default class TrainingProgramForm extends React.Component {
         startDate: '',
         endDate: '',
         maxAttendance: '',
-        response: '',
+        response: ''
     }
 
     change = (e) => {
-        this.setState(
-            {
-                [e.target.name]: e.target.value
-            }
-        )
+        this.setState({
+            [e.target.name]: e.target.value
+        })
     }
 
     onSubmit = (e) => {
@@ -24,78 +24,77 @@ export default class TrainingProgramForm extends React.Component {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(this.state)
-        })
-            .then(res => res)
-            .then(
-            (result) => {
+                body: JSON.stringify(this.state)
+            })
+            .then((res) => {
                 this.setState({
                     isLoaded: true,
                     name: '',
                     startDate: '',
                     endDate: '',
-                    maxAttendance: '',
-                    response: result.ok ? 'New Training Program Created' : 'Error, retry submission'
-                });
-                
-            },
-            (error) => {
-                this.setState({
-                    isLoaded: true,
-                    response: '',
-                    error
-                });
+                    maxAttendance: '',  
+                    response: res.ok ? 'New Training Program Created': 'Error, Retry Submission'
+            })
+                this.props.onClickCollapseAll();
+            }, (error) => {
+                this.setState({isLoaded: true, response: '', error});
+            })
             }
-            )
-    }
 
     render() {
         return (
 
             <div>
-                <form>
-                    <input
-                        name='name'
-                        placeholder='Program Name'
-                        type='text'
-                        required
-                        value={this.state.name}
-                        onChange={e => this.change(e)} />
-                    <br />
-                    <input
-                        name='startDate'
-                        placeholder='Start Date'
-                        type='date'
-                        required
-                        value={this.state.startDate}
-                        onChange={e => this.change(e)} />
-                    <br />
-                    <input
-                        name='endDate'
-                        placeholder='End Date'
-                        type='date'
-                        required
-                        value={this.state.endDate}
-                        onChange={e => this.change(e)} />
-                    <br />
-                    <input
-                        name='maxAttendance'
-                        placeholder='Maximum Attendance'
-                        type='text'
-                        required
-                        value={this.state.maxAttendance}
-                        onChange={e => this.change(e)} />
-
-                    <br />
-                    <button onClick={e => this.onSubmit(e)}>Submit</button>
-                </form>
-                <div>{this.state.response}</div>
+                <Row>
+                    <Col s={12}>
+                    <Row>
+                        <Input                             
+                            name='name'
+                            label='Program Name'
+                            type='text'
+                            required
+                            value={this.state.name}
+                            onChange={e => this.change(e)}/>
+                        </Row>
+                        <Row>
+                        <Input 
+                            className='add_width'
+                            name='startDate'
+                            label='Start Date'
+                            type='date'
+                            required
+                            value={this.state.startDate}
+                            onChange={e => this.change(e)}/>
+                        </Row>
+                        <Row>
+                        <Input
+                            className='add_width'
+                            name='endDate'
+                            label='End Date'
+                            type='date'
+                            required
+                            value={this.state.endDate}
+                            onChange={e => this.change(e)}/>
+                        </Row>
+                        <Row>
+                        <Input
+                            className='add_width'
+                            name='maxAttendance'
+                            label='Maximum Attendance'
+                            type='text'
+                            required
+                            value={this.state.maxAttendance}
+                            onChange={e => this.change(e)}/>
+                        </Row>
+                        <Button onClick={e => this.onSubmit(e)}>Submit</Button>
+                    </Col>
+                    <div>{this.state.response}</div>
+                </Row>
             </div>
 
         );
     }
 
 }
-
