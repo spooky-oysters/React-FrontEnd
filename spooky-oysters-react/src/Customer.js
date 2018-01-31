@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import {Modal, Collapsible, CollapsibleItem, Row, Col, Container, Button, Input} from 'react-materialize';
 
 export default class CustomerComponent extends React.Component {
     constructor(prop) {
@@ -43,9 +44,13 @@ export default class CustomerComponent extends React.Component {
         return(
         <section className="component">
         <h1>Customers</h1>
-        <button onClick={this.onClickList}>List Customers</button>
-        <button onClick={this.onClickForm}>Add New</button>
-        <button onClick={this.onClickCollapseAll}>Collapse</button>
+        <Button onClick={this.onClickList}>List Customers</Button>
+        <Modal
+                header='Add a Customer'
+                trigger={<Button onClick={this.onClickForm}>Add New Customer</Button>}>
+                <CustomerForm onClickCollapseAll={this.onClickCollapseAll}/>
+            </Modal>
+        <Button onClick={this.onClickCollapseAll}>Collapse</Button>
         { this.state.showList ? <CustomerList /> : null}
         { this.state.showNew ? <CustomerForm /> : null}
         </section>
@@ -111,18 +116,27 @@ class CustomerList extends React.Component {
           return <div>Loading...</div>;
         } else {
           return (
-            <ul>
-              {items.map(item => (
-                <li key={item.customerId}>
-                <CustomerListItem 
+            <Container>
+            <Row>
+              <Col s={8} className='offset-s2'>
+                {items.map(item => (
+                <Collapsible popout defaultActiveKey={1} key={item.customerId}>
+                  <CollapsibleItem header={`${item.firstName} ${item.lastName}`} id={item.customerId}>
+                  
+                  <CustomerListItem 
                   firstName={item.firstName} 
                   lastName={item.lastName}
+                  lastLogin={item.lastLoginDate}
                   id={item.customerId}
                   removeItem={this.removeItem}  
                 />
-                </li>
-              ))}
-            </ul>
+                  
+                  </CollapsibleItem>
+                </Collapsible>
+                  ))}
+              </Col>
+            </Row>
+          </Container>
           );
         }
       }
@@ -133,7 +147,7 @@ class CustomerListItem extends React.Component {
     constructor(prop) {
         super(prop);
         this.state = {
-            showDetail: false,
+            showDetail: true,
             firstName: this.props.firstName,
             lastName: this.props.lastName,
             id: this.props.id
@@ -157,7 +171,6 @@ class CustomerListItem extends React.Component {
     render() {
         return (
             <div>
-                <span className="listItem" onClick={this.toggleDetail}>{this.state.firstName} {this.state.lastName}</span>
                 {this.state.showDetail ? <CustomerListItemDetail id={this.state.id} removeItem={this.props.removeItem}/> : null}
             </div>
         );
@@ -261,7 +274,6 @@ class CustomerForm extends React.Component {
                     firstName: '',
                     lastName: '',
                     lastLoginDate: Date.Now,
-                    customerId: '',
                     response: result.ok ? 'New Customer Created' : 'Error, retry submission'
                 });
                 
@@ -279,29 +291,35 @@ class CustomerForm extends React.Component {
     render() {
         return (
 
-            <div>
+                <Row>
+                <Col s={12}>
                 <form>
-                    <input
+                    <Row>
+                    <Input
                         name='firstName'
                         placeholder='First Name'
                         type='text'
                         required
                         value={this.state.firstName}
                         onChange={e => this.change(e)} />
-                    <br />
-                    <input
+
+                    </Row>
+                    <Row>
+                    <Input
                         name='lastName'
                         placeholder='Last Name'
                         type='text'
                         required
                         value={this.state.lastName}
                         onChange={e => this.change(e)} />
-                    <br />
-                   
+
+                   </Row>
                     <button onClick={e => this.onSubmit(e)}>Submit</button>
                 </form>
                 <div>{this.state.response}</div>
-            </div>
+                </Col>  
+                </Row>
+
 
         );
     }
