@@ -1,5 +1,6 @@
 import React from 'react';
-import {Row, Col, Button} from 'react-materialize';
+import {Row, Col, Button, Input} from 'react-materialize';
+import './index.css';
 
 export default class TrainingProgramForm extends React.Component {
 
@@ -35,7 +36,9 @@ export default class TrainingProgramForm extends React.Component {
                     endDate: '',
                     maxAttendance: '',  
                     response: res.ok ? 'New Training Program Created': 'Error, Retry Submission'
-            })}, (error) => {
+            })
+                this.props.onClickCollapseAll();
+            }, (error) => {
                 this.setState({isLoaded: true, response: '', error});
             })
             }
@@ -45,40 +48,46 @@ export default class TrainingProgramForm extends React.Component {
 
             <div>
                 <Row>
-                    <Col s={12} className='grid-example'>
-                        <input
+                    <Col s={12}>
+                    <Row>
+                        <Input                             
                             name='name'
-                            placeholder='Program Name'
+                            label='Program Name'
                             type='text'
                             required
                             value={this.state.name}
                             onChange={e => this.change(e)}/>
-                        <br/>
-                        <input
+                        </Row>
+                        <Row>
+                        <Input 
+                            className='add_width'
                             name='startDate'
-                            placeholder='Start Date'
+                            label='Start Date'
                             type='date'
                             required
                             value={this.state.startDate}
                             onChange={e => this.change(e)}/>
-                        <br/>
-                        <input
+                        </Row>
+                        <Row>
+                        <Input
+                            className='add_width'
                             name='endDate'
-                            placeholder='End Date'
+                            label='End Date'
                             type='date'
                             required
                             value={this.state.endDate}
                             onChange={e => this.change(e)}/>
-                        <br/>
-                        <input
+                        </Row>
+                        <Row>
+                        <Input
+                            className='add_width'
                             name='maxAttendance'
-                            placeholder='Maximum Attendance'
+                            label='Maximum Attendance'
                             type='text'
                             required
                             value={this.state.maxAttendance}
                             onChange={e => this.change(e)}/>
-
-                        <br/>
+                        </Row>
                         <Button onClick={e => this.onSubmit(e)}>Submit</Button>
                     </Col>
                     <div>{this.state.response}</div>

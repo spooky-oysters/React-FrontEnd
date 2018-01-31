@@ -48,7 +48,7 @@ export default class TrainingProgram extends React.Component {
             <Modal
                 header='Add a Training Program'
                 trigger={<Button onClick={this.onClickForm}>Add New Program</Button>}>
-                <TrainingProgramForm />
+                <TrainingProgramForm onClickCollapseAll={this.onClickCollapseAll}/>
             </Modal>
             <Button onClick={this.onClickCollapseAll}>Collapse</Button>
             
