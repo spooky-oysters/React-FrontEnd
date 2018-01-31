@@ -27,23 +27,18 @@ export default class TrainingProgramForm extends React.Component {
             },
                 body: JSON.stringify(this.state)
             })
-            .then(res => res)
-            .then((result) => {
+            .then((res) => {
                 this.setState({
                     isLoaded: true,
                     name: '',
                     startDate: '',
                     endDate: '',
-                    maxAttendance: '',
-                    response: result.ok
-                        ? 'New Training Program Created'
-                        : 'Error, retry submission'
-                });
-
-            }, (error) => {
+                    maxAttendance: '',  
+                    response: res.ok ? 'New Training Program Created': 'Error, Retry Submission'
+            })}, (error) => {
                 this.setState({isLoaded: true, response: '', error});
             })
-    }
+            }
 
     render() {
         return (

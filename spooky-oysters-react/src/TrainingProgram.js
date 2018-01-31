@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import TrainingProgramList from './TrainingProgramList.js';
 import TrainingProgramForm from './trainingProgramForm.js';
-import {Button, Modal, Dropdown, Tabs, Tab} from 'react-materialize';
+import {Button, Modal} from 'react-materialize';
 
 export default class TrainingProgram extends React.Component {
     constructor(prop) {

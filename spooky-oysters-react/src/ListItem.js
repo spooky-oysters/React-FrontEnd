@@ -6,7 +6,7 @@ export default class TrainingProgramListItem extends React.Component {
     constructor(prop) {
         super(prop);
         this.state = {
-            showDetail: false,
+            showDetail: true,
             name: this.props.name,
             id: this.props.id
         }
@@ -29,7 +29,7 @@ export default class TrainingProgramListItem extends React.Component {
     render() {
         return (
             <div>
-                <span className="listItem" onClick={this.toggleDetail}>{this.state.name}</span>
+                {/* <span className="listItem" onClick={this.toggleDetail}>{this.state.name}</span> */}
                 {this.state.showDetail ? <Detail id={this.state.id} removeItem={this.props.removeItem}/> : null}
             </div>
         );

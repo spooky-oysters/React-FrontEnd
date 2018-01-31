@@ -1,7 +1,6 @@
 import React from 'react';
 import './index.css';
 import ListItem from './ListItem.js';
-import Detail from './Detail.js';
 import {Collapsible, CollapsibleItem, Row, Col, Container} from 'react-materialize';
 
 export default class TrainingProgramList extends React.Component {
@@ -64,30 +63,24 @@ export default class TrainingProgramList extends React.Component {
       } else {
         return (
           <Container>
-          <Row>
-            <Col s={8} className='offset-s2'>
-              {items.map(item => (
-              <Collapsible popout defaultActiveKey={1} key={item.trainingProgramId}>
-                <CollapsibleItem header={item.name} id={item.trainingProgramId}>
-                <Detail id={item.trainingProgramId}/>
-                </CollapsibleItem>
-              </Collapsible>
-                ))}
-            </Col>
-          </Row>
+            <Row>
+              <Col s={8} className='offset-s2'>
+                {items.map(item => (
+                <Collapsible popout defaultActiveKey={1} key={item.trainingProgramId}>
+                  <CollapsibleItem header={item.name} id={item.trainingProgramId}>
+                  
+                  <ListItem 
+                    name={item.name} 
+                    id={item.trainingProgramId}
+                    removeItem={this.removeItem}  
+                  />
+                  
+                  </CollapsibleItem>
+                </Collapsible>
+                  ))}
+              </Col>
+            </Row>
           </Container>
-
-          // <ul>
-          //   {items.map(item => (
-          //     <li key={item.trainingProgramId}>
-          //     <ListItem 
-          //       name={item.name} 
-          //       id={item.trainingProgramId}
-          //       removeItem={this.removeItem}  
-          //     />
-          //     </li>
-          //   ))}
-          // </ul>
         );
     }
   }
